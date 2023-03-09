@@ -7,25 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Spinner
+        android:id="@+id/conversionSpinner"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
+
         <EditText
             android:id="@+id/inputNumber"
-            android:layout_width="40dp"
             android:inputType="numberDecimal"
-            android:layout_height="wrap_content"/>
+            android:layout_margin="16dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/text_input_border"
+            android:layout_width="match_parent"
+            android:focusable="false"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:layout_height="45dp"/>
 
-        <Spinner
-            android:id="@+id/conversionSpinner"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
 
     <Button
         android:layout_marginTop="15dp"

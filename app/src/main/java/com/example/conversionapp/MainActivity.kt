@@ -56,23 +56,21 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         Toast.makeText(this, "$p0", Toast.LENGTH_SHORT).show()
     }
 
-    fun convert(unitOfMeasurement: String, inputNumber: Double){
-
-        var inputData = "$unitOfMeasurement$inputNumber"
-
-        when (unitOfMeasurement){
-            "km" -> conversionResult = "$inputData =  ${inputNumber * 0.62}mi"
-            "mi" -> conversionResult = "$inputData = ${inputNumber * 1.61}km"
-            "cm" -> conversionResult = "$inputData = ${inputNumber * 0.39}in"
-            "in" -> conversionResult = "$inputData = ${inputNumber * 2.54}cm"
-            "kg" -> conversionResult = "$inputData = ${inputNumber * 2.2}lb"
-            "lb" -> conversionResult = "$inputData =  ${inputNumber * 0.45}kg"
-            "g" -> conversionResult = "$inputData =  ${inputNumber * 0.04}oz"
-            "oz" -> conversionResult = "$inputData =  ${inputNumber * 28.35}g"
-            "C" -> conversionResult = "$inputData =  ${(inputNumber * (9.0/5))+32}F"
-            "L" -> conversionResult = "$inputData =  ${inputNumber * 4.17}cups"
-            "cup" -> conversionResult = "$inputData =  ${inputNumber * 0.24}L"
-            else -> conversionResult = "not found" //return not found if the measurement unit is not available
+    private fun convert(unitOfMeasurement: String, inputNumber: Double){
+        //setting value for the conversion result
+        conversionResult = when (unitOfMeasurement){
+            "km" -> "${inputNumber * 0.62}mi"
+            "mi" -> "${inputNumber * 1.61}km"
+            "cm" -> "${inputNumber * 0.39}in"
+            "in" -> "${inputNumber * 2.54}cm"
+            "kg" -> "${inputNumber * 2.2}lb"
+            "lb" -> "${inputNumber * 0.45}kg"
+            "g" -> "${inputNumber * 0.04}oz"
+            "oz" -> "${inputNumber * 28.35}g"
+            "C" -> "${(inputNumber * (9.0/5))+32}F"
+            "L" -> "${inputNumber * 4.17}cups"
+            "cup" -> "${inputNumber * 0.24}L"
+            else -> "not found" //return not found if the measurement unit is not available
         }
     }
 }

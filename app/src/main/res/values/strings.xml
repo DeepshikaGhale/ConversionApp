@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ConversionApp</string>
+    //create array for spinner
+    <string-array name="units">
+        <item>Please select an unit</item>
+        <item>km</item>
+        <item>mi</item>
+        <item>cm</item>
+        <item>in</item>
+        <item>kg</item>
+        <item>lb</item>
+    </string-array>
+</resources>

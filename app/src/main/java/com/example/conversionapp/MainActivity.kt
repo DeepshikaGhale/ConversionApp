@@ -1,5 +1,6 @@
 package com.example.conversionapp
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -36,14 +37,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //convert
         binding.convertBtn.setOnClickListener(){
-            if (selectedItem.isNotBlank() && selectedItem != "Please select an unit"){
-                //store user input
-                userInput = binding.inputNumber.text.toString().toDouble()
-                convert(selectedItem, userInput)
-                binding.answer.text = conversionResult
-                Toast.makeText(this, "Converted Successfully!!", Toast.LENGTH_SHORT).show()
+
+            if(binding.inputNumber.text.isNotEmpty()){
+                checkUnit()
             }else{
-                Toast.makeText(this, "Please select a unit to convert!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter a number!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -56,7 +54,30 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         Toast.makeText(this, "$p0", Toast.LENGTH_SHORT).show()
     }
 
+    fun setColorForSpinner(){
+
+    }
+
+    //check if the unit field is empty or not
+    private fun checkUnit(){
+        if (selectedItem.isNotBlank() && selectedItem != "Select unit"){
+            //store user input
+            userInput = binding.inputNumber.text.toString().toDouble()
+            convert(selectedItem, userInput)
+            binding.answer.text = conversionResult
+
+            //to make the answer title visible
+            binding.answerTitle.visibility = View.VISIBLE
+            binding.answer.visibility = View.VISIBLE
+            Toast.makeText(this, "Conversion successful", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Converted Successfully!", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "Please select a unit to convert!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun convert(unitOfMeasurement: String, inputNumber: Double){
+        print(unitOfMeasurement)
         //setting value for the conversion result
         conversionResult = when (unitOfMeasurement){
             "km" -> "${inputNumber * 0.62}mi"

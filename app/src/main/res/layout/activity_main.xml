@@ -7,40 +7,75 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Spinner
-        android:id="@+id/conversionSpinner"
-        android:layout_marginStart="20dp"
-        android:layout_width="wrap_content"
+    <TextView
+        android:text="Number:"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textStyle="normal"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <EditText
+        android:id="@+id/inputNumber"
+        android:inputType="numberDecimal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="10dp"
+        android:hint="0.0"
+        android:background="@drawable/border"
+        android:layout_width="match_parent"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:layout_height="45dp"/>
 
-        <EditText
-            android:id="@+id/inputNumber"
-            android:inputType="numberDecimal"
-            android:layout_margin="16dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:background="@drawable/text_input_border"
-            android:layout_width="match_parent"
-            android:focusable="false"
-            android:textCursorDrawable="@drawable/cursor_drawable"
-            android:layout_height="45dp"/>
+    <TextView
+        android:text="Select a unit:"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textStyle="normal"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
+    <Spinner
+        android:id="@+id/conversionSpinner"
+        android:padding="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:id="@+id/convertBtn"
         android:text="convert"
+        android:shadowColor="@color/orange"
+        android:background="@drawable/btn_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/answer"
-        android:textSize="14dp"
-        android:layout_margin="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
+       <TextView
+           android:id="@+id/answerTitle"
+           android:visibility="invisible"
+           android:text="Answer:"
+           android:textColor="@color/black"
+           android:textSize="14dp"
+           android:textStyle="normal"
+           android:layout_margin="16dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+
+       <TextView
+           android:id="@+id/answer"
+           android:textColor="@color/black"
+           android:textSize="14dp"
+           android:textStyle="normal"
+           android:layout_margin="16dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

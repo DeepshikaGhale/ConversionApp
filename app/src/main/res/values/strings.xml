@@ -2,7 +2,7 @@
     <string name="app_name">ConversionApp</string>
     //create array for spinner
     <string-array name="units">
-        <item>Please select an unit</item>
+        <item>Select unit</item>
         <item>km</item>
         <item>mi</item>
         <item>cm</item>

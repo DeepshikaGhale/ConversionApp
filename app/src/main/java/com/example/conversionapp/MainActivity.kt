@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.get
 import com.example.conversionapp.databinding.ActivityMainBinding
-
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.units,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_item
         )
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.conversionSpinner.adapter = adapter
         binding.conversionSpinner.onItemSelectedListener = this
 
-        //convert
+        //convert button
         binding.convertBtn.setOnClickListener(){
 
             if(binding.inputNumber.text.isNotEmpty()){
@@ -54,9 +54,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         Toast.makeText(this, "$p0", Toast.LENGTH_SHORT).show()
     }
 
-    fun setColorForSpinner(){
-
-    }
 
     //check if the unit field is empty or not
     private fun checkUnit(){
@@ -70,28 +67,29 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             binding.answerTitle.visibility = View.VISIBLE
             binding.answer.visibility = View.VISIBLE
             Toast.makeText(this, "Conversion successful", Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, "Converted Successfully!", Toast.LENGTH_SHORT).show()
         }else{
             Toast.makeText(this, "Please select a unit to convert!", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun convert(unitOfMeasurement: String, inputNumber: Double){
-        print(unitOfMeasurement)
+        val inputData = "$inputNumber $unitOfMeasurement"
+
         //setting value for the conversion result
         conversionResult = when (unitOfMeasurement){
-            "km" -> "${inputNumber * 0.62}mi"
-            "mi" -> "${inputNumber * 1.61}km"
-            "cm" -> "${inputNumber * 0.39}in"
-            "in" -> "${inputNumber * 2.54}cm"
-            "kg" -> "${inputNumber * 2.2}lb"
-            "lb" -> "${inputNumber * 0.45}kg"
-            "g" -> "${inputNumber * 0.04}oz"
-            "oz" -> "${inputNumber * 28.35}g"
-            "C" -> "${(inputNumber * (9.0/5))+32}F"
-            "L" -> "${inputNumber * 4.17}cups"
-            "cup" -> "${inputNumber * 0.24}L"
+            "km" -> "$inputData =  ${roundOffAnswer(inputNumber * 0.62)} mi"
+            "mi" -> "$inputData = ${roundOffAnswer(inputNumber * 1.61)} km"
+            "cm" -> "$inputData = ${roundOffAnswer(inputNumber * 0.39)} in"
+            "in" -> "$inputData = ${roundOffAnswer(inputNumber * 2.54)} cm"
+            "kg" -> "$inputData = ${roundOffAnswer(inputNumber * 2.2)} lb"
+            "lb" -> "$inputData = ${roundOffAnswer(inputNumber * 0.45)} kg"
             else -> "not found" //return not found if the measurement unit is not available
         }
+    }
+
+    //round off the answers from measurement
+    private fun roundOffAnswer(measurement: Double) : String {
+        val df = DecimalFormat("#.##")
+        return  df.format(measurement)
     }
 }
